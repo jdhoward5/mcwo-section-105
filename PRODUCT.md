@@ -26,7 +26,7 @@ The resource pairs Section 105's numbered learning topics with interactive demon
 - The notes cover topics 105.1–105.28. The lab catalog currently contains 27 modules, covering 105.2–105.28.
 - The learning interaction is to choose a topic, consult its explanation, change an input, and observe what changes and what remains constant.
 - Notes are Markdown documents with section references and source links. The lab runs locally in a browser, served by `demos/server.py`.
-- Run the lab from `demos/` with `.venv/bin/python server.py`, then open `http://127.0.0.1:8000`. The server accepts `--port` for an alternate port.
+- Run the lab from the project root with `python3 demos/server.py` (Python 3.11 or newer), or `docker compose up --build`, then open `http://127.0.0.1:8000`. No Python packages or virtual environment are required. The server accepts `--port` for an alternate port.
 
 ## Capabilities and Constraints
 
@@ -41,7 +41,7 @@ Existing implementation and project requirements are documented in `demos/AGENTS
 - Use browser-side logic when sufficient; Python transformations and small JSON endpoints support modules that need them.
 - Preserve section numbering and correspondence between notes, catalog entries, and demonstrations.
 
-The intended hosting or distribution model beyond the existing local server is undecided. Learners' prerequisite knowledge and any formal assessment requirements have not been specified.
+Distribution uses the private personal GitHub repository `jdhoward5/mcwo-section-105`, with invited collaborators, versioned ZIP releases, Python launchers, and an optional Docker image built locally from the downloaded source. The default runtime is local to each learner's computer. Learners' prerequisite knowledge and any formal assessment requirements have not been specified.
 
 ## Brand Commitments
 
