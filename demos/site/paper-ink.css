@@ -1,0 +1,75 @@
+/* Paper & Ink across navigation, reading, experiments, and diagrams. */
+:root {
+  color-scheme: light;
+  --workspace-page: #f5f2e9;
+  --workspace-panel: #fffdf6;
+  --workspace-raised: #e8eee8;
+  --workspace-ink: #25352f;
+  --workspace-muted: #4b5d54;
+  --workspace-faint: #53655c;
+  --workspace-accent: #17634f;
+  --workspace-line: #c7d0c7;
+  --page: var(--workspace-page);
+  --panel: var(--workspace-panel);
+  --panel-raised: var(--workspace-raised);
+  --ink: var(--workspace-ink);
+  --muted: var(--workspace-muted);
+  --faint: var(--workspace-faint);
+  --teal: var(--workspace-accent);
+  --teal-dim: #e8eee8;
+  --amber: #844515;
+  --blue: #245a94;
+  --line: var(--workspace-line);
+  --inset: #eef1e7;
+  --byte-ink-lightness: 25%;
+  --byte-disc-lightness: 28%;
+  --violet: #674397;
+  --danger: #a3312b;
+  --orange: #99431f;
+  --amber-dim: rgba(132, 69, 21, .09);
+  --blue-dim: rgba(36, 90, 148, .09);
+  --panel-rgb: 255, 253, 246;
+  --inset-rgb: 230, 235, 224;
+  --overlay-rgb: 37, 53, 47;
+  --line-rgb: 67, 90, 74;
+  --muted-rgb: 83, 101, 92;
+  --shadow-rgb: 75, 88, 68;
+  --teal-rgb: 23, 99, 79;
+  --amber-rgb: 132, 69, 21;
+  --blue-rgb: 36, 90, 148;
+  --violet-rgb: 103, 67, 151;
+  --danger-rgb: 163, 49, 43;
+  --orange-rgb: 153, 67, 31;
+  --diagram-blue: #245a94;
+  --diagram-green: #17634f;
+  --diagram-violet: #674397;
+  --on-accent: #fffdf6;
+  --accent-hover: #114e3e;
+}
+body { background: var(--page); }
+.topbar, .sidebar { background: var(--panel); }
+.topbar { backdrop-filter: none; }
+.sidebar { scrollbar-color: var(--faint) var(--panel); }
+.brand-mark, .skip-link { color: var(--on-accent); background: var(--teal); }
+.nav-item:hover, .topic-family > summary:hover { background: var(--panel-raised); }
+.nav-item.active { background: var(--panel-raised); border-color: var(--teal); }
+.topic-search input, .mobile-module-picker select { border-color: #7b8d80; }
+.button.primary { color: var(--on-accent); background: var(--teal); }
+.button.primary:hover { background: var(--accent-hover); }
+.topic-toolbar .button:hover, .notes-panel .button:hover { color: var(--ink); border-color: var(--teal); }
+
+/* All lab surfaces inherit the theme; no dark island inside the workspace. */
+.experiment-card, .m2328-panel, .mcwo1116-card { box-shadow: 0 8px 24px rgba(37, 53, 47, .06); }
+.mcwo1116-network-board line:not(.failed) { stroke: var(--teal); }
+.virt-layers button:not(.active) { background: var(--panel); }
+
+/* Category meanings stay consistent on both headers and diagram labels. */
+.demo-header .chip, .m2328-header .m2328-badge {
+  color: var(--workspace-accent);
+  background: var(--workspace-raised);
+}
+.demo-header .chip.algorithm, .demo-header .chip.deserialization { color: #844515; }
+.demo-header .chip.encoding { color: #245a94; }
+.demo-header .chip.concept, .demo-header .chip.serialization { color: #674397; }
+.m2328-header .m2328-badge { border-color: var(--workspace-line); }
+.reference-page, .notes-panel { color-scheme: light; }

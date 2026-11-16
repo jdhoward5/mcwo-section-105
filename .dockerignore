@@ -1,0 +1,11 @@
+**
+!demos/
+!demos/server.py
+!demos/notes.py
+!demos/105_*.py
+!demos/site/
+!demos/site/**
+!105.1.md
+!Information Fundamentals Overview.md
+**/.DS_Store
+**/__pycache__/

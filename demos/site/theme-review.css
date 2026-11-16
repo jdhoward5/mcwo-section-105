@@ -1,0 +1,32 @@
+@font-face { font-family: "Source Sans 3"; src: url("/fonts/SourceSans3-Variable.ttf") format("truetype"); font-style: normal; font-weight: 200 900; font-display: swap; }
+:root { color-scheme: dark; font-family: "Source Sans 3", sans-serif; color: #edf0f2; background: #171b20; }
+* { box-sizing: border-box; }
+body { margin: 0; }
+button, input { font: inherit; }
+:focus-visible { outline: 2px solid #c8d9ed; outline-offset: 4px; }
+.review-header { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 20px 24px 12px; }
+h1 { margin: 0; font-size: 24px; line-height: 1.2; }
+.review-header p { margin: 6px 0 0; color: #b8c2cc; font-size: 15px; }
+a { color: #d5e4f6; text-underline-offset: 4px; padding-block: 12px; white-space: nowrap; }
+fieldset { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 8px 24px; border: 0; }
+legend { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+.theme-option { display: flex; align-items: center; gap: 10px; min-height: 48px; padding: 10px 14px; border: 1px solid #586573; border-radius: 8px; cursor: pointer; }
+.theme-option:has(:checked) { background: #2e3946; border-color: #c8d9ed; }
+.theme-option:hover { background: #252e38; }
+.theme-option input { margin: 0; accent-color: #c8d9ed; }
+.swatches { display: flex; gap: 3px; }
+.swatches i { width: 14px; height: 20px; border-radius: 2px; background: var(--swatch); }
+.review-detail { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 4px 24px; }
+.review-detail p { margin: 0; line-height: 1.5; max-width: 85ch; }
+button { min-height: 44px; flex-shrink: 0; padding: 8px 12px; border: 1px solid #7c8c9e; border-radius: 6px; color: #edf0f2; background: transparent; cursor: pointer; }
+button:hover:not(:disabled) { background: #2e3946; }
+button:disabled { opacity: .5; cursor: wait; }
+.scope { margin: 4px 24px 16px; color: #b8c2cc; font-size: 13px; line-height: 1.5; }
+iframe { display: block; width: 100%; height: calc(100dvh - 240px); min-height: 640px; border: 0; border-top: 1px solid #586573; background: #071214; }
+@media (max-width: 700px) {
+  .review-header, .review-detail { flex-direction: column; align-items: start; gap: 8px; padding-inline: 16px; }
+  fieldset { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); padding-inline: 16px; }
+  .theme-option { gap: 8px; padding: 10px 8px; font-size: 14px; }
+  .swatches { display: none; }
+  .scope { margin-inline: 16px; }
+}

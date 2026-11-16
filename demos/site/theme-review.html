@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Theme review · Information Lab</title>
+  <link rel="stylesheet" href="/theme-review.css" />
+</head>
+<body>
+  <header class="review-header">
+    <div><h1>Choose the atmosphere</h1><p>Four workspace palettes for the Information Lab. Switch colors while keeping your place.</p></div>
+    <a href="/">Return to the lab</a>
+  </header>
+  <main>
+    <fieldset id="themes"><legend>Compare themes</legend></fieldset>
+    <div class="review-detail">
+      <p id="theme-description" aria-live="polite"></p>
+      <button id="preview-notes" type="button" disabled>Open or close notes</button>
+    </div>
+    <p class="scope">Paper &amp; Ink is the lab’s default. Other palettes are previews only. Paper &amp; Ink also themes the experiments and diagrams; teaching color categories are preserved.</p>
+    <iframe id="lab-preview" title="Interactive Information Lab theme preview" src="/?theme-review#105-2"></iframe>
+  </main>
+  <script type="module" src="/theme-review.js"></script>
+</body>
+</html>

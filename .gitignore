@@ -1,0 +1,16 @@
+.DS_Store
+._*
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+.impeccable/
+.codex/
+.idea/
+.vscode/
+dist/
+build/
+*.log

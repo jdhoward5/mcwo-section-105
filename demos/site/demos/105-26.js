@@ -1,0 +1,28 @@
+function loadStyles(){if(!document.querySelector('link[data-m2328-styles]')){const l=document.createElement("link");l.rel="stylesheet";l.href="./demos/105-23-28.css";l.dataset.m2328Styles="true";document.head.append(l);}}
+const EVENTS={
+disclosure:{name:"Exposed backup",detail:"An unauthorized viewer can read a backup copy.",impact:{c:92,i:18,a:8},controls:[
+  {name:"Encryption",reduce:{c:.7},note:"Makes copied backup contents unreadable without the key; it does not restore availability."},
+  {name:"Access restrictions",reduce:{c:.55,i:.1},note:"Reduces unauthorized reads and some unauthorized changes."},
+  {name:"Data classification",reduce:{c:.25},note:"Helps apply handling rules, but does not itself encrypt or block access."}]},
+tamper:{name:"Altered record",detail:"A valid record was changed without approval.",impact:{c:12,i:96,a:20},controls:[
+  {name:"Digital signature",reduce:{i:.65},note:"Makes unauthorized modification detectable when verification is performed."},
+  {name:"Validation",reduce:{i:.5},note:"Rejects malformed or policy-invalid changes before they become trusted state."},
+  {name:"Protected audit log",reduce:{i:.35},note:"Preserves evidence for detection and recovery; it may not prevent the first change."}]},
+outage:{name:"Service outage",detail:"Authorized users cannot reach the service.",impact:{c:5,i:16,a:98},controls:[
+  {name:"Redundancy",reduce:{a:.7},note:"Provides another service path when one component fails."},
+  {name:"Capacity planning",reduce:{a:.5},note:"Reduces overload risk but does not address every failure mode."},
+  {name:"Monitoring and recovery",reduce:{a:.4,i:.1},note:"Shortens detection and restoration time after an outage."}]},
+ransom:{name:"Ransomware",detail:"Files are changed and systems are unavailable; data may also be exposed.",impact:{c:55,i:88,a:94},controls:[
+  {name:"Access controls",reduce:{c:.35,i:.3,a:.15},note:"Limits what a compromised identity or process can reach."},
+  {name:"Backups",reduce:{i:.45,a:.7},note:"Supports restoration of data and service; backups do not undo stolen-data disclosure."},
+  {name:"Segmentation and monitoring",reduce:{c:.25,i:.35,a:.4},note:"Contains spread and speeds detection across several pillars."}]}}
+;
+export async function mount(root){loadStyles();root.innerHTML=`<article class="m2328-page"><header class="m2328-header"><div><p class="m2328-kicker">Module 105.26 · Information Security pillars</p><h1>Diagnose the security impact</h1><p>Inject an event, observe which CIA pillars are harmed, and apply a control to see why security requires all three.</p></div><span class="m2328-badge">CIA incident board</span></header>
+<section class="m2328-panel m2328-cia"><div class="m2328-event-list" role="group" aria-label="Choose incident">${Object.entries(EVENTS).map(([k,e],i)=>`<button data-event="${k}" aria-pressed="${i===0}"><span>${String(i+1).padStart(2,"0")}</span><b>${e.name}</b><small>${e.detail}</small></button>`).join("")}</div>
+<div class="m2328-cia-stage"><header><span>LIVE IMPACT ASSESSMENT</span><h2 data-incident></h2><p data-incident-detail></p></header><div class="m2328-pillars">${[["c","Confidentiality","Authorized access only"],["i","Integrity","Accurate, complete, unaltered"],["a","Availability","Accessible when needed"]].map(([k,n,d])=>`<article data-pillar="${k}"><div><span>${k.toUpperCase()}</span><strong>${n}</strong></div><div class="m2328-impact"><i></i></div><b data-impact="${k}"></b><p>${d}</p></article>`).join("")}</div>
+<div class="m2328-response"><div><span>SELECT A CONTROL</span><div data-controls></div></div><div class="m2328-response-result" data-response aria-live="polite"></div></div></div></section>
+<aside class="m2328-note"><strong>Read impacts independently</strong><span>An incident can harm more than one pillar. Controls reduce risk; they do not make a system universally secure or guarantee zero impact.</span></aside></article>`;
+let current="disclosure",selected=null;const listeners=[];const on=(e,t,f)=>{e.addEventListener(t,f);listeners.push(()=>e.removeEventListener(t,f));};
+function render(){const e=EVENTS[current],control=selected===null?null:e.controls[selected];root.querySelectorAll("[data-event]").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.event===current)));root.querySelector("[data-incident]").textContent=e.name;root.querySelector("[data-incident-detail]").textContent=e.detail;for(const k of ["c","i","a"]){const val=e.impact[k],reduced=control?Math.round(val*(1-(control.reduce[k]||0))):val,card=root.querySelector(`[data-pillar="${k}"]`);card.querySelector("i").style.transform=`translateX(${reduced-100}%)`;card.querySelector(`[data-impact="${k}"]`).textContent=`${reduced}% modeled impact`;card.classList.toggle("m2328-severe",reduced>=70);}root.querySelector("[data-controls]").innerHTML=e.controls.map((c,i)=>`<button type="button" data-control-index="${i}" aria-pressed="${selected===i}">${c.name}</button>`).join("");root.querySelector("[data-response]").innerHTML=control===null?`<span>RESPONSE STATUS</span><strong>Impact unmitigated</strong><p>Choose a relevant control to see its pillar-specific effect.</p>`:`<span>CONTROL APPLIED</span><strong>${control.name}</strong><p>${control.note} Residual risk remains.</p>`;}
+on(root.querySelector("[data-controls]"),"click",(event)=>{const button=event.target.closest("[data-control-index]");if(!button)return;selected=Number(button.dataset.controlIndex);render();root.querySelector(`[data-control-index="${selected}"]`)?.focus();});
+root.querySelectorAll("[data-event]").forEach(b=>on(b,"click",()=>{current=b.dataset.event;selected=null;render();}));render();return()=>listeners.splice(0).forEach(off=>off());}

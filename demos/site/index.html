@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Interactive demonstrations for MCWO Section 105 information fundamentals."
+    />
+    <title>MCWO 105 · Information Lab</title>
+    <link rel="preload" href="/fonts/SourceSans3-Variable.ttf" as="font" type="font/ttf" crossorigin />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/demos/105-11-16.css" data-mcwo1116-style="true" />
+    <link rel="stylesheet" href="/demos/105-17-22.css" />
+    <link rel="stylesheet" href="/demos/105-23-28.css" data-m2328-styles="true" />
+    <link rel="stylesheet" href="/dashboard.css" />
+    <link rel="stylesheet" href="/paper-ink.css" id="paper-ink-theme" />
+  </head>
+  <body>
+    <a class="skip-link" href="#demo-root">Skip to current topic</a>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#105-2" aria-label="Information Lab — open the first experiment">
+          <span class="brand-mark" aria-hidden="true">105</span>
+          <span>
+            <strong>Information Lab</strong>
+            <small>MCWO Section 105</small>
+          </span>
+        </a>
+      </header>
+
+      <aside class="sidebar" aria-label="Topic navigation">
+        <h2 class="sr-only">Topics</h2>
+        <label class="topic-search" for="topic-search">
+          <span>Find a topic</span>
+          <input type="search" id="topic-search" placeholder="Try compression or 105.8" autocomplete="off" />
+        </label>
+        <p id="search-status" class="search-status" role="status"></p>
+        <label class="mobile-module-picker" for="mobile-module-select">
+          <span>Topic</span>
+          <select id="mobile-module-select"></select>
+        </label>
+        <nav id="demo-navigation" aria-label="Section 105 topics"></nav>
+        <div id="search-empty" hidden>
+          <p>No matching topics. Try a term such as “network” or a number such as “105.8”.</p>
+          <button type="button" class="button subtle" id="clear-search">Clear search</button>
+        </div>
+      </aside>
+
+      <div class="learning-workspace" id="learning-workspace">
+        <div class="experiment-workspace" id="experiment-workspace">
+          <div class="topic-toolbar">
+            <span id="current-topic"></span>
+            <button type="button" class="button subtle" id="read-notes" aria-controls="notes-panel" aria-expanded="false">Read notes</button>
+          </div>
+          <main id="demo-root" tabindex="-1"></main>
+        </div>
+        <aside class="notes-panel" id="notes-panel" aria-labelledby="notes-title" hidden>
+          <header class="notes-header">
+            <h2 id="notes-title" tabindex="-1">Reference notes</h2>
+            <button type="button" class="button subtle" id="close-notes">Return to experiment</button>
+          </header>
+          <p class="notes-reading-hint">Your inputs are kept. Autoplay pauses while you read.</p>
+          <details class="notes-settings">
+            <summary>Reading width</summary>
+            <label class="notes-width" for="notes-width">Notes panel width
+              <input id="notes-width" type="range" min="320" max="500" step="20" value="380" aria-valuetext="380 pixels" />
+            </label>
+          </details>
+          <div id="notes-content" class="notes-content" aria-live="polite"></div>
+          <p class="notes-source" id="notes-source"></p>
+        </aside>
+      </div>
+    </div>
+    <p class="sr-only" id="horizontal-scroll-instructions">
+      This region scrolls horizontally. Use Shift plus the mouse wheel, a trackpad gesture, or the left and right arrow keys.
+    </p>
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>
