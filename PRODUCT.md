@@ -41,7 +41,7 @@ Existing implementation and project requirements are documented in `demos/AGENTS
 - Use browser-side logic when sufficient; Python transformations and small JSON endpoints support modules that need them.
 - Preserve section numbering and correspondence between notes, catalog entries, and demonstrations.
 
-Distribution uses the private personal GitHub repository `jdhoward5/mcwo-section-105`, with invited collaborators, versioned ZIP releases, Python launchers, and an optional Docker image built locally from the downloaded source. The default runtime is local to each learner's computer. Learners' prerequisite knowledge and any formal assessment requirements have not been specified.
+Distribution uses the public personal GitHub repository `jdhoward5/mcwo-section-105`, with versioned ZIP releases, Python launchers, and an optional Docker image built locally from the downloaded source. Downloading the lab does not require a GitHub account or invitation. The default runtime is local to each learner's computer. Learners' prerequisite knowledge and any formal assessment requirements have not been specified.
 
 ## Brand Commitments
 

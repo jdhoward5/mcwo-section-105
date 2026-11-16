@@ -6,7 +6,7 @@ It runs locally in your browser. Choose either Python or Docker below.
 
 ## Get the lab
 
-Sign into the GitHub account that accepted the repository invitation.
+The repository is public; no GitHub account or invitation is needed to download it.
 Download and extract a version from **Releases**, or choose **Code → Download ZIP**
 for the current source. Git users can clone:
 
@@ -15,8 +15,6 @@ git clone https://github.com/jdhoward5/mcwo-section-105.git
 cd mcwo-section-105
 ```
 
-Cloning a private repository requires GitHub authentication (for example,
-`gh auth login`). Browser downloads only require signing into GitHub.
 Extract the complete folder: the Markdown files alongside `demos/` are required
 by the notes reader.
 
@@ -81,13 +79,12 @@ docker run --rm -p 127.0.0.1:8000:8000 mcwo-section-105:local
 The image includes the notes, experiments, and Python runtime. External source
 links in the notes still require internet access.
 
-## Sharing access (repository owner)
+## Sharing the lab
 
-Keep this repository **private**. In **Settings → Collaborators → Add people**,
-invite the recipient's GitHub account. Once they accept, send them the repository
-or release link. Personal-account collaborators have write access as well as
-download access. Removing a collaborator prevents future repository access;
-it does not remove copies they already downloaded.
+Send recipients the [repository](https://github.com/jdhoward5/mcwo-section-105)
+or [release link](https://github.com/jdhoward5/mcwo-section-105/releases).
+They can download and run the lab without a GitHub account or collaborator access.
+The lab runs on their own computer using the instructions above.
 
 ## Development checks
 
